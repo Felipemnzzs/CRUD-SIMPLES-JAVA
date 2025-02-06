@@ -28,6 +28,7 @@ public class TelaListar extends JFrame {
     private void initComponents() {
         tableModel = new DefaultTableModel(new Object[]{"ID", "Nome", "Idade", "Telefone", "Sexo"}, 0);
         table = new JTable(tableModel);
+        table.setDefaultEditor(Object.class, null);
         JScrollPane scrollPane = new JScrollPane(table);
         
         btnRemover = new JButton("Remover");
