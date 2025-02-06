@@ -51,6 +51,23 @@ public class TelaPrincipal extends JFrame {
 	        JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
 	        return false;
 	    }
+	    try {
+	        int idade = Integer.parseInt(txtIdade.getText().trim());
+	        if (idade <= 0) {
+	            JOptionPane.showMessageDialog(this, "Idade deve ser um número positivo!");
+	            return false;
+	        }
+	    } catch (NumberFormatException e) {
+	        JOptionPane.showMessageDialog(this, "Idade deve ser um número válido!");
+	        return false;
+	    }
+
+	    try {
+	        Long.parseLong(txtTelefone.getText().trim());
+	    } catch (NumberFormatException e) {
+	        JOptionPane.showMessageDialog(this, "Telefone deve conter apenas números!");
+	        return false;
+	    }
 	    return true;
 	}
 	
@@ -64,9 +81,7 @@ public class TelaPrincipal extends JFrame {
 		    idSelecionado = usuario.getId();
 		    txtNome.setText(usuario.getNome());
 		    txtIdade.setText(String.valueOf(usuario.getIdade()));
-		    txtTelefone.setText(usuario.getTelefone());
-		    
-		   
+		    txtTelefone.setText(String.valueOf(usuario.getTelefone()));
 		    txtGenero.setSelectedItem(usuario.getSexo());
 
 		    btnAdicionar.setEnabled(false);
@@ -74,8 +89,9 @@ public class TelaPrincipal extends JFrame {
 		}
 
 	
-	@SuppressWarnings("deprecation")
+
 	public TelaPrincipal() {
+		btnAtualizar.setEnabled(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 512, 275);
 		contentPane = new JPanel();
@@ -142,7 +158,7 @@ public class TelaPrincipal extends JFrame {
 					Usuario usuario = new Usuario();
 					usuario.setNome(txtNome.getText());
 					usuario.setIdade(Integer.parseInt(txtIdade.getText()));
-					usuario.setTelefone(txtTelefone.getText());
+					usuario.setTelefone(Integer.parseInt(txtTelefone.getText()));
 					usuario.setSexo(txtGenero.getSelectedItem().toString());
 					
 					new banco().inserir(usuario);
@@ -158,7 +174,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(btnAdicionar);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
-		btnAtualizar.disable();
+		
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    if (idSelecionado != -1 && validarCampos()) {
@@ -166,7 +182,7 @@ public class TelaPrincipal extends JFrame {
                     usuario.setId(idSelecionado);
                     usuario.setNome(txtNome.getText());
                     usuario.setIdade(Integer.parseInt(txtIdade.getText()));
-                    usuario.setTelefone(txtTelefone.getText());
+                    usuario.setTelefone(Integer.parseInt(txtTelefone.getText()));
                     usuario.setSexo(txtGenero.getSelectedItem().toString());
                     
                     new banco().atualizar(usuario);

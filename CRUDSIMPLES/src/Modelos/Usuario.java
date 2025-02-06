@@ -5,7 +5,7 @@ public class Usuario {
 	private int Id;
 	private String Nome;
 	private int Idade;
-	private String Telefone;
+	private int Telefone;
 	private String Sexo;
 	
 	
@@ -13,7 +13,7 @@ public class Usuario {
 		
 	}
 	
-	public Usuario(int Id, String Nome, int Idade, String Telefone, String Sexo ) {
+	public Usuario(int Id, String Nome, int Idade, int Telefone, String Sexo ) {
 		
 		this.Id = Id;
 		this.Nome = Nome;
@@ -48,11 +48,11 @@ public class Usuario {
 		this.Idade = idade;
 	}
 
-	public String getTelefone() {
+	public int getTelefone() {
 		return Telefone;
 	}
 
-	public void setTelefone(String telefone) {
+	public void setTelefone(int telefone) {
 		this.Telefone = telefone;
 	}
 

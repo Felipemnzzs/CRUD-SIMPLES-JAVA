@@ -19,7 +19,7 @@ public class banco {
              
             ps.setString(1, usuario.getNome());
             ps.setInt(2, usuario.getIdade());
-            ps.setString(3, usuario.getTelefone());
+            ps.setInt(3, usuario.getTelefone());
             ps.setString(4, usuario.getSexo());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -35,7 +35,7 @@ public class banco {
              
             ps.setString(1, usuario.getNome());
             ps.setInt(2, usuario.getIdade());
-            ps.setString(3, usuario.getTelefone());
+            ps.setInt(3, usuario.getTelefone());
             ps.setString(4, usuario.getSexo());
             ps.setInt(5, usuario.getId());
             ps.executeUpdate();
@@ -70,7 +70,7 @@ public class banco {
                 u.setId(rs.getInt("id"));
                 u.setNome(rs.getString("nome"));
                 u.setIdade(rs.getInt("idade"));
-                u.setTelefone(rs.getString("telefone"));
+                u.setTelefone(rs.getInt("telefone"));
                 u.setSexo(rs.getString("sexo"));
                 lista.add(u);
             }
@@ -96,7 +96,7 @@ public class banco {
                     u.setId(rs.getInt("id"));
                     u.setNome(rs.getString("nome"));
                     u.setIdade(rs.getInt("idade"));
-                    u.setTelefone(rs.getString("telefone"));
+                    u.setTelefone(rs.getInt("telefone"));
                     u.setSexo(rs.getString("sexo"));
                 }
             }
