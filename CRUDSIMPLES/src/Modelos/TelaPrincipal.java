@@ -47,7 +47,7 @@ public class TelaPrincipal extends JFrame {
 	    if (txtNome.getText().trim().isEmpty() ||
 	        txtIdade.getText().trim().isEmpty() ||
 	        txtTelefone.getText().trim().isEmpty() ||
-	        txtGenero.getSelectedIndex() == 0) { // Corrigido para JComboBox
+	        txtGenero.getSelectedIndex() == 0) { 
 	        JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
 	        return false;
 	    }
